@@ -28,23 +28,23 @@ export const AvatarIcon = styled(MdPerson).attrs({
     color: '#FFFFFF',
     size: '1.4rem',
 })``;
- export const Logo = styled.img`
+export const Logo = styled.img`
     width: 150px;
     heigth: 150px;
     cursor: pointer;
  `;
- export const Menu = styled.ul`
+export const Menu = styled.ul`
     display: flex;
     flex-direction: row;
     align-items: center;
     list-style: none;
     position: absolute;
-    right: 75px;
-    margin: 0 25px;
+    right: 285px;
+    margin: 0 55px;
    
  `;
 
- export const MenuItem = styled.li`
+export const MenuItem = styled.li`
     display: flex;
     color: #000000;
     cursor: pointer;

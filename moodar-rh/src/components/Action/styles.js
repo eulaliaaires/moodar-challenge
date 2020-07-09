@@ -1,6 +1,5 @@
-import { MdAccessTime, MdPersonOutline } from 'react-icons/md';
+import { MdAccessTime, MdDelete, MdPersonOutline } from 'react-icons/md';
 import styled from 'styled-components';
-
 export const Container = styled.div`
     display: flex;
     flex-direction: column;
@@ -26,7 +25,7 @@ export const Duration = styled.div`
    align-items: center;
    width: fit-content;
 `;
-export const Participants = styled.p`
+export const Participants = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -36,13 +35,20 @@ export const Participants = styled.p`
 export const ClockIcon = styled(MdAccessTime).attrs({
     color: '#000000',
     size: '1.4rem',
-    verticalAlign: 'middle',
+    // verticalAlign: 'middle',
 })``;
 export const PersonIcon = styled(MdPersonOutline).attrs({
     color: '#000000',
     size: '1.4rem',
-    verticalAlign: 'middle',
-    
+    // verticalAlign: 'middle',
+
+})``;
+export const DeleteIcon = styled(MdDelete).attrs({
+    color: '#000000',
+    size: '1.4rem',
+    // verticalAlign: 'middle',
+    cursor: 'pointer',
+
 })``;
 export const Text = styled.p`
     font-size: 0.9rem;

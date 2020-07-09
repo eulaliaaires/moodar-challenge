@@ -2,9 +2,9 @@ import React from 'react';
 import { Container } from './styles';
 
 
-export default function Button({ buttonTitle }) {
+export default function Button({ buttonTitle, onClick }) {
     return (
-        <Container>
+        <Container onClick={onClick}>
             {buttonTitle}
         </Container>
     );
@@ -12,7 +12,7 @@ export default function Button({ buttonTitle }) {
 
 
 Button.propTypes = {
-    
+
 };
 
 Button.defaultProps = {};

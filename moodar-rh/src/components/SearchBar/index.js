@@ -1,18 +1,22 @@
 import React from 'react';
-import { Container } from './styles';
+import { Container, Input, SearchIcon } from './styles';
+
 
 
 export default function SearchBar({ buttonTitle }) {
     return (
-        <Container placeholder="Buscar categoria"/>
-            
-       
+        <Container >
+            <SearchIcon />
+            <Input placeholder="Buscar por ação ou categoria" />
+        </Container>
+
+
     );
 }
 
 
 SearchBar.propTypes = {
-    
+
 };
 
 SearchBar.defaultProps = {};

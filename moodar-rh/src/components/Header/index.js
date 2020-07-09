@@ -6,7 +6,8 @@ import { Avatar, AvatarIcon, Container, Logo, Menu, MenuItem } from './styles';
 
 
 
-export default function Header({}) {
+export default function Header({ actions }) {
+    console.log('a', actions);
     return (
         <Container>
             <a href="https://moodar.com.br/">
@@ -14,19 +15,19 @@ export default function Header({}) {
             </a>
             <Menu>
                 <MenuItem>Categorias</MenuItem>
-                <MenuItem onClick={() => history.push('solicitacoes')}>Minhas Solicitações</MenuItem>
+                <MenuItem onClick={() => history.push({ pathname: 'solicitacoes', data: { actions } })}>Minhas Solicitações</MenuItem>
             </Menu>
             <Avatar>
-                <AvatarIcon/>
+                <AvatarIcon />
             </Avatar>
-            <SearchBar/>
+            <SearchBar />
         </Container>
     );
 }
 
 
 Header.propTypes = {
-    
+
 };
 
 Header.defaultProps = {};

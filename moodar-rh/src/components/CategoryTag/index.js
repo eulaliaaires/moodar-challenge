@@ -3,10 +3,10 @@ import React from 'react';
 import { ColorIndicator, Container, Title } from './styles';
 
 
-export default function CategoryTag({ categoryTitle, categoryColor}) {
+export default function CategoryTag({ categoryTitle, categoryColor }) {
     return (
         <Container categoryColor={categoryColor}>
-            <ColorIndicator categoryColor={categoryColor}/>
+            <ColorIndicator categoryColor={categoryColor} />
             <Title>{categoryTitle}</Title>
         </Container>
     );
@@ -14,7 +14,7 @@ export default function CategoryTag({ categoryTitle, categoryColor}) {
 
 
 CategoryTag.propTypes = {
-    title: PropTypes.string.isRequired,
+    categoryTitle: PropTypes.string.isRequired,
 };
 
 CategoryTag.defaultProps = {};
