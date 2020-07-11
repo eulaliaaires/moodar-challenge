@@ -5,11 +5,14 @@ import CategoryTag from '../CategoryTag';
 import { ClockIcon, Container, DeleteIcon, Description, Duration, Participants, PersonIcon, Text, Title, WrapDetails } from './styles';
 
 
-export default function Action({ title, description, duration, participants, categoryColor, categoryTitle, selectedAction, id }) {
+export default function Action({ title, description, duration, participants, categoryColor, categoryTitle, selectedAction, id, remove, solicitated, getId }) {
     return (
         <Container>
             <Title>{title}</Title>
-            <DeleteIcon></DeleteIcon>
+            {solicitated ?
+                <DeleteIcon onClick={() => { remove(true); getId(id) }}></DeleteIcon> :
+                null
+            }
             <Description>{description}</Description>
             <CategoryTag categoryColor={categoryColor} categoryTitle={categoryTitle} />
             <WrapDetails>
@@ -22,8 +25,12 @@ export default function Action({ title, description, duration, participants, cat
                     <Text>{participants}</Text>
                 </Participants>
             </WrapDetails>
-            <Button buttonTitle="SOLICITAR" onClick={() => selectedAction(id)}></Button>
-        </Container>
+            {
+                !solicitated ?
+                    <Button gradient buttonTitle="SOLICITAR" onClick={() => selectedAction(id)}></Button> :
+                    null
+            }
+        </Container >
     );
 }
 

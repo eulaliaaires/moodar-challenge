@@ -5,14 +5,14 @@ export const Container = styled.div`
     flex-direction: column;
     width: 70%;
     // background-color: #DEDEDE;
-    padding: 8px;
+    padding: 8px 8px 15px 8px;
     // border-radius: 22px;
     border-bottom: 2px solid #DEDEDE;
     font-family: 'Raleway', sans-serif;
 
 `;
 export const Description = styled.p`
-    font-size: 1.2rem;
+    font-size: 1rem;
     color: #000000;
 `;
 export const Title = styled.h1`
@@ -52,7 +52,8 @@ export const DeleteIcon = styled(MdDelete).attrs({
 })``;
 export const Text = styled.p`
     font-size: 0.9rem;
-    color: '#000000',
+    color: '#000000';
+    margin-left: 3px;
 `;
 export const WrapDetails = styled.div`
     display: flex;

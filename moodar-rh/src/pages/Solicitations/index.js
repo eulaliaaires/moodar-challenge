@@ -1,30 +1,75 @@
 import React, { useEffect, useState } from 'react';
 import Action from '../../components/Action';
 import Header from '../../components/Header';
-import { Content } from './styles';
-// const a = [1, 2, 4];
+import { DATA } from '../../services/api';
+import { BackdropCustom, Content, ModalContent, ModalCustom, ModalTitle, StyledButton, useStyles, WrapButtons } from './styles';
+
 export default function Solicitations(props) {
-    const [actions, setActions] = useState(undefined);
+
+    const [actions, setActions] = useState([]);
+    const [open, setOpen] = useState(false);
+    const [id, setId] = useState('');
     console.log('aqui', actions)
     const { data } = props.location;
-    console.log('here', data);
+    console.log('here', data.actions);
+    const classes = useStyles();
+    console.log(classes);
+
+    const handleOpen = (bool) => {
+        setOpen(bool);
+    }
+    const getId = (i) => {
+        setId(i);
+    }
+    const deleteAction = () => {
+        console.log('id', id);
+        console.log('acti', actions);
+        let aux = [];
+        const index = actions.indexOf(id);
+        console.log('index', index);
+        aux = actions.splice(index, 1);
+        console.log('ax', aux);
+        setActions(aux);
+        setOpen(false);
+
+    }
+
     useEffect(() => {
-        setActions(data);
-    })
+        setActions(data.actions);
+
+    }, [actions])
+
     return (
         <>
             <Header />
             <Content>
-                {actions === undefined ?
+                {data === undefined || data.actions.length === 0 ?
                     <p> Nenhuma solicitação no momento</p> :
                     <>
-                        <Action title="Como lidar com a Covid-19" description="ablubleblueblue" duration="35min" participants="4 partcipantes" categoryColor="#2e9ae2" categoryTitle="Treinamentos"></Action>
-                        <Action title="Gestão e liderança" description="ablubleblueblue" duration="35min" participants="4 pessoas" categoryColor="#e64149" categoryTitle="Treinamentos"></Action>
-                        <Action title="Worklife balance" description="ablubleblueblue" duration="35min" participants="4 pessoas" categoryColor="#8d4b93" categoryTitle="Webinar"></Action>
-                        <Action title="Auto-cuidado emocional" description="ablubleblueblue" duration="35min" participants="4 pessoas" categoryColor="#23cffd" categoryTitle="Webinar"></Action>
-                        <Action title="Como lidar com a Covid-19" description="ablubleblueblue" duration="35min" participants="4 pessoas" categoryColor="#5677c1" categoryTitle="Palestras presenciais"></Action>
+                        {actions.map((item, index) => {
+                            const object = DATA[item];
+                            return (
+                                <Action title={object.title} description={object.description} duration={object.duration} participants={object.participants} categoryColor={object.categoryColor} categoryTitle={object.categoryTitle} remove={handleOpen} id={item} getId={getId} solicitated></Action>
+                            )
+                        })}
                     </>
                 }
+                <ModalCustom
+                    aria-labelledby="transition-modal-title"
+                    aria-describedby="transition-modal-description"
+                    closeAfterTransition
+                    onClose={() => setOpen(false)}
+                    open={open}
+                    BackdropComponent={BackdropCustom}
+                >
+                    <ModalContent className={classes.paper}>
+                        <ModalTitle>Você realmente deseja cancelar a solicitação desta ação?</ModalTitle>
+                        <WrapButtons>
+                            <StyledButton background="#e64149" buttonTitle="NÃO" onClick={() => setOpen(false)}></StyledButton>
+                            <StyledButton buttonTitle="SIM" onClick={() => deleteAction(id)}></StyledButton>
+                        </WrapButtons>
+                    </ModalContent>
+                </ModalCustom>
             </Content>
         </>
     );

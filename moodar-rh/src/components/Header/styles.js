@@ -11,6 +11,9 @@ export const Container = styled.nav`
     top: 0;
     padding: 0 0 0 25px;
     font-family: 'Raleway', sans-serif;
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(222,222,222,1);
+-moz-box-shadow: 0px 1px 3px 0px rgba(222,222,222,1);
+box-shadow: 0px 1px 3px 0px rgba(222,222,222,1);
 `;
 export const Avatar = styled.div`
     display: flex;
@@ -50,6 +53,9 @@ export const MenuItem = styled.li`
     cursor: pointer;
     margin-right: 15px;
     &:hover{
+        color: #2e9ae2;
+    }
+    .active{
         color: #2e9ae2;
     }
  `;

@@ -8,8 +8,8 @@ export const Container = styled.button`
     height: 35px;
     padding: 8px;
     border-radius: 22px;
-    background-color: #309ae1;
-    background-image: linear-gradient(270deg, #309ae1 0%, #9e62ff 50%, #e3414c 100%);
+    background-color: ${props => props.background ? props.background : '#309ae1'};
+    background-image: ${ props => props.gradient ? 'linear-gradient(270deg, #309ae1 0%, #9e62ff 50%, #e3414c 100%)' : null};
     color: #FFFFFF;
     -webkit-apperance: none;
     border: none;

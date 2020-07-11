@@ -3,9 +3,13 @@ import Action from '../../components/Action';
 import Header from '../../components/Header';
 import { DATA } from '../../services/api';
 import { Content } from './styles';
-const aux = [1, 2, 3];
+const aux = [];
 export default function Home() {
     const [data, setData] = useState([]);
+    const [search, setSearch] = useState('');
+    // const input = React.createRef();
+
+    // console.log('refi', input.current);
 
     useEffect(() => {
         setData(DATA);
@@ -16,12 +20,18 @@ export default function Home() {
         aux.push(id);
         console.log('foi', aux);
     }
-
+    const input = document.getElementById('inpt');
+    const changeValue = (e) => {
+        setSearch(e.target.value);
+    }
+    const filteredActions = data.filter(action => {
+        return action.title.toLowerCase().indexOf(search.toLowerCase()) !== -1 || action.categoryTitle.toLowerCase().indexOf(search.toLowerCase()) !== -1
+    })
     return (
         <>
-            <Header actions={aux} />
+            <Header actions={aux} onChange={changeValue} />
             <Content>
-                {data.map((item, index) => {
+                {filteredActions.map((item, index) => {
                     return (
                         <Action
                             title={item.title}
