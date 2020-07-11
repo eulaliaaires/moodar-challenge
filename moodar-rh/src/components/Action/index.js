@@ -2,19 +2,23 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import Button from '../Button';
 import CategoryTag from '../CategoryTag';
-import { ClockIcon, Container, DeleteIcon, Description, Duration, Image, Participants, PersonIcon, Text, Title, WrapDescription, WrapDetails } from './styles';
+import { ClockIcon, Container, DeleteIcon, Description, Duration, Image, Participants, PersonIcon, Text, Title, WrapDescription, WrapDetails, WrapTitle } from './styles';
 
 
 export default function Action({ title, description, duration, participants, categoryColor, categoryTitle, selectedAction, id, remove, solicitated, getId, img }) {
     return (
         <Container>
-            <Title>{title}</Title>
-            {solicitated ?
-                <DeleteIcon onClick={() => { remove(true); getId(id) }}></DeleteIcon> :
-                null
-            }
+            <WrapTitle>
+                <Title>{title}</Title>
+                {solicitated ?
+                    <DeleteIcon onClick={() => { remove(true); getId(id) }}></DeleteIcon> :
+                    null
+                }
+            </WrapTitle>
             <WrapDescription>
-                <Image src={img}></Image>
+                {!solicitated ?
+                    < Image src={img}></Image> : null
+                }
                 <Description>{description}</Description>
             </WrapDescription>
             <CategoryTag categoryColor={categoryColor} categoryTitle={categoryTitle} />

@@ -30,7 +30,6 @@ export default function Home() {
         }
 
     }
-    const input = document.getElementById('inpt');
     const changeValue = (e) => {
         setSearch(e.target.value);
     }
@@ -45,6 +44,7 @@ export default function Home() {
                 {filteredActions.map((item, index) => {
                     return (
                         <Action
+                            key={item.title}
                             title={item.title}
                             description={item.description}
                             duration={item.duration}

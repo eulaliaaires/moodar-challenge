@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import Action from '../../components/Action';
 import Header from '../../components/Header';
 import { DATA } from '../../services/api';
@@ -13,7 +14,7 @@ export default function Solicitations(props) {
     const [id, setId] = useState('');
     console.log('aqui', actions)
     const { data } = props.location;
-    console.log('here', data.actions);
+    console.log('here', data);
     const classes = useStyles();
     console.log(classes);
 
@@ -34,6 +35,9 @@ export default function Solicitations(props) {
         setActions(aux);
         setOpen(false);
         saveToStorage();
+        toast.info('SOLICITAÇÃO REMOVIDA COM SUCESSO', {
+            position: toast.POSITION.TOP_RIGHT,
+        });
 
     }
 
@@ -58,7 +62,7 @@ export default function Solicitations(props) {
         <>
             <Header onChange={changeValue} />
             <Content>
-                {data.actions.length === 0 ?
+                {data == undefined || data.actions === undefined || data.actions.length === 0 ?
                     <p> Nenhuma solicitação no momento</p> :
                     <>
                         {filteredActions.map((item, index) => {
