@@ -4,9 +4,11 @@ import Header from '../../components/Header';
 import { DATA } from '../../services/api';
 import { BackdropCustom, Content, ModalContent, ModalCustom, ModalTitle, StyledButton, useStyles, WrapButtons } from './styles';
 
+
 export default function Solicitations(props) {
 
     const [actions, setActions] = useState([]);
+    const [search, setSearch] = useState('');
     const [open, setOpen] = useState(false);
     const [id, setId] = useState('');
     console.log('aqui', actions)
@@ -31,22 +33,35 @@ export default function Solicitations(props) {
         console.log('ax', aux);
         setActions(aux);
         setOpen(false);
+        saveToStorage();
 
     }
 
+    const saveToStorage = () => {
+        localStorage.setItem('list_actions', JSON.stringify(actions));
+    }
+
+    const changeValue = (e) => {
+        setSearch(e.target.value);
+    }
+    const filteredActions = actions.filter(action => {
+        return DATA[action].title.toLowerCase().indexOf(search.toLowerCase()) !== -1 || DATA[action].categoryTitle.toLowerCase().indexOf(search.toLowerCase()) !== -1
+    })
+
     useEffect(() => {
         setActions(data.actions);
+    }, [actions]);
 
-    }, [actions])
 
+    const r = JSON.parse(localStorage.getItem('list_actions'));
     return (
         <>
-            <Header />
+            <Header onChange={changeValue} />
             <Content>
-                {data === undefined || data.actions.length === 0 ?
+                {data.actions.length === 0 ?
                     <p> Nenhuma solicitação no momento</p> :
                     <>
-                        {actions.map((item, index) => {
+                        {filteredActions.map((item, index) => {
                             const object = DATA[item];
                             return (
                                 <Action title={object.title} description={object.description} duration={object.duration} participants={object.participants} categoryColor={object.categoryColor} categoryTitle={object.categoryTitle} remove={handleOpen} id={item} getId={getId} solicitated></Action>

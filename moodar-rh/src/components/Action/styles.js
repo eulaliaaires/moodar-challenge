@@ -12,8 +12,10 @@ export const Container = styled.div`
 
 `;
 export const Description = styled.p`
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #000000;
+    width: 55%;
+    text-align: left;
 `;
 export const Title = styled.h1`
     font-size: 1.4rem;
@@ -44,7 +46,7 @@ export const PersonIcon = styled(MdPersonOutline).attrs({
 
 })``;
 export const DeleteIcon = styled(MdDelete).attrs({
-    color: '#000000',
+    color: '#e64149',
     size: '1.4rem',
     // verticalAlign: 'middle',
     cursor: 'pointer',
@@ -60,4 +62,15 @@ export const WrapDetails = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 50%;
+    margin: 8px 0;
+`;
+export const Image = styled.img`
+    background-position: cover;
+    width: 40%;
+    heigth: 40%;
+    margin-right: 20px;
+`;
+export const WrapDescription = styled.div`
+    display: flex;
+    justify-content: space-between;
 `;

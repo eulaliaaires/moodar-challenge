@@ -10,6 +10,7 @@ export default function Header({ actions, onChange }) {
 
     const category = React.createRef();
     const solicitations = React.createRef();
+    const action = React.createRef();
     const [categoryActive, setCategoryActive] = useState(false);
     const [solicitationActive, setSolicitationActive] = useState(false);
 
@@ -22,13 +23,13 @@ export default function Header({ actions, onChange }) {
         const identSolicitationsText = solicitationsText.substring(solicitations.current.innerHTML.indexOf(' ') + 1).replace(/çõ/g, 'co');
 
         if (url === categoryText) {
-            setCategoryActive(true);
-
+            category.current.style.color = '#2e9ae2';
         }
         else if (url === identSolicitationsText) {
             solicitations.current.style.color = '#2e9ae2';
-            setSolicitationActive(true);
-
+        }
+        else {
+            action.current.style.color = '#2e9ae2';
         }
 
     })
@@ -40,6 +41,7 @@ export default function Header({ actions, onChange }) {
                 <Logo src={logo} />
             </a>
             <Menu>
+                <MenuItem ref={action} className={categoryActive ? 'active' : ''}>Ações</MenuItem>
                 <MenuItem ref={category} className={categoryActive ? 'active' : ''}>Categorias</MenuItem>
                 <MenuItem ref={solicitations} className={solicitationActive ? 'active' : ''} onClick={() => history.push({ pathname: 'solicitacoes', data: { actions } })}>Minhas Solicitações</MenuItem>
             </Menu>

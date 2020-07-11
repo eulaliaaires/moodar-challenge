@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
 import Action from '../../components/Action';
 import Header from '../../components/Header';
 import { DATA } from '../../services/api';
 import { Content } from './styles';
 const aux = [];
+
 export default function Home() {
     const [data, setData] = useState([]);
     const [search, setSearch] = useState('');
-    // const input = React.createRef();
-
-    // console.log('refi', input.current);
 
     useEffect(() => {
         setData(DATA);
@@ -17,8 +16,19 @@ export default function Home() {
 
     const updateSelectedActions = (id) => {
         console.log('entrou aqui');
-        aux.push(id);
-        console.log('foi', aux);
+        if (aux.indexOf(id) === -1) {
+            aux.push(id);
+            console.log('foi', aux);
+            toast.info('AÇÃO SOLICITADA COM SUCESSO', {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+        }
+        else {
+            toast.error('Esta ação já foi solicitada', {
+                position: toast.POSITION.TOP_RIGHT,
+            });
+        }
+
     }
     const input = document.getElementById('inpt');
     const changeValue = (e) => {
@@ -31,6 +41,7 @@ export default function Home() {
         <>
             <Header actions={aux} onChange={changeValue} />
             <Content>
+                {/* < ToastContainer /> */}
                 {filteredActions.map((item, index) => {
                     return (
                         <Action
@@ -40,8 +51,10 @@ export default function Home() {
                             participants={item.participants}
                             categoryColor={item.categoryColor}
                             categoryTitle={item.categoryTitle}
+                            img={item.src}
                             id={index}
-                            selectedAction={updateSelectedActions}>
+                            selectedAction={updateSelectedActions}
+                        >
                         </Action>
                     )
                 })}

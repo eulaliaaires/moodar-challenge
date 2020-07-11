@@ -6,6 +6,7 @@ export const DATA = [
         categoryTitle: 'Treinamentos',
         duration: '35min',
         participants: '4 pessoas',
+        src: require('../assets/imgs/logo-moodar.png'),
     },
     {
         title: 'Como lidar com a Covid-19',
@@ -14,6 +15,7 @@ export const DATA = [
         categoryTitle: 'Treinamentos',
         duration: '35min',
         participants: '4 pessoas',
+        src: require('../assets/imgs/logo-moodar.png'),
     },
     {
         title: 'Gestão e liderança',
@@ -22,6 +24,7 @@ export const DATA = [
         categoryTitle: 'Webinar',
         duration: '35min',
         participants: '4 pessoas',
+        src: require('../assets/imgs/logo-moodar.png'),
     },
     {
         title: 'Worklife balance',
@@ -30,6 +33,7 @@ export const DATA = [
         categoryTitle: 'Palestras presenciais',
         duration: '35min',
         participants: '4 pessoas',
+        src: require('../assets/imgs/logo-moodar.png'),
     },
     {
         title: 'Auto-cuidado emocional',
@@ -38,6 +42,7 @@ export const DATA = [
         categoryTitle: 'Webinar Online',
         duration: '2d',
         participants: '4 pessoas',
+        src: require('../assets/imgs/logo-moodar.png'),
     },
 
 ]
