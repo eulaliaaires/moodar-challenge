@@ -2,7 +2,6 @@ import React from 'react';
 import { Router } from 'react-router-dom';
 import { Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './App.css';
 import Routes from './routes';
 import history from './services/history';
 

@@ -12,13 +12,12 @@ export default function Home() {
 
     useEffect(() => {
         setData(DATA);
-    });
+    }, []);
 
     const updateSelectedActions = (id) => {
-        console.log('entrou aqui');
+
         if (aux.indexOf(id) === -1) {
             aux.push(id);
-            console.log('foi', aux);
             toast.info('AÇÃO SOLICITADA COM SUCESSO', {
                 position: toast.POSITION.TOP_RIGHT,
             });

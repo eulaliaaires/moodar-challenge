@@ -12,11 +12,11 @@ export default function Solicitations(props) {
     const [search, setSearch] = useState('');
     const [open, setOpen] = useState(false);
     const [id, setId] = useState('');
-    console.log('aqui', actions)
+
     const { data } = props.location;
-    console.log('here', data);
+
     const classes = useStyles();
-    console.log(classes);
+
 
     const handleOpen = (bool) => {
         setOpen(bool);
@@ -25,13 +25,9 @@ export default function Solicitations(props) {
         setId(i);
     }
     const deleteAction = () => {
-        console.log('id', id);
-        console.log('acti', actions);
         let aux = [];
         const index = actions.indexOf(id);
-        console.log('index', index);
         aux = actions.splice(index, 1);
-        console.log('ax', aux);
         setActions(aux);
         setOpen(false);
         saveToStorage();
@@ -54,7 +50,7 @@ export default function Solicitations(props) {
 
     useEffect(() => {
         setActions(data.actions);
-    }, [actions]);
+    }, [actions, data.actions]);
 
 
     const r = JSON.parse(localStorage.getItem('list_actions'));
@@ -62,13 +58,25 @@ export default function Solicitations(props) {
         <>
             <Header onChange={changeValue} />
             <Content>
-                {data == undefined || data.actions === undefined || data.actions.length === 0 ?
+                {data === undefined || data.actions === undefined || data.actions.length === 0 ?
                     <p> Nenhuma solicitação no momento</p> :
                     <>
                         {filteredActions.map((item, index) => {
                             const object = DATA[item];
                             return (
-                                <Action title={object.title} description={object.description} duration={object.duration} participants={object.participants} categoryColor={object.categoryColor} categoryTitle={object.categoryTitle} remove={handleOpen} id={item} getId={getId} solicitated></Action>
+                                <Action
+                                    title={object.title}
+                                    description={object.description}
+                                    duration={object.duration}
+                                    participants={object.participants}
+                                    categoryColor={object.categoryColor}
+                                    categoryTitle={object.categoryTitle}
+                                    remove={handleOpen}
+                                    id={item}
+                                    getId={getId}
+                                    key={object.title}
+                                    solicitated>
+                                </Action>
                             )
                         })}
                     </>
