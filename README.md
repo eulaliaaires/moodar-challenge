@@ -5,9 +5,8 @@ Repositório para o desafio da Moodar
 ### Orientações para executar o projeto
 
 >> #### Passo 1: Clonar o repositório do projeto
->>> ``` git clone abc ```
-
->> #### Passo 2: Acessar a raiz do projeto
+>>> ``` git clone https://github.com/eulaliaaires/moodar-challenge.git ```
+ >> #### Passo 2: Acessar a raiz do projeto
 >>> ``` cd moodar-challenge ```  
  >>> ``` cd moodar-rh ```
 
