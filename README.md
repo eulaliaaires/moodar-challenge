@@ -6,6 +6,7 @@ Repositório para o desafio da Moodar
 
 >> #### Passo 1: Clonar o repositório do projeto
 >>> ``` git clone https://github.com/eulaliaaires/moodar-challenge.git ```
+
  >> #### Passo 2: Acessar a raiz do projeto
 >>> ``` cd moodar-challenge ```  
  >>> ``` cd moodar-rh ```
@@ -13,5 +14,8 @@ Repositório para o desafio da Moodar
 >> #### Passo 3: Instalar dependências
  >>> ``` yarn ```
 
- >> #### Passo 4: Executar o projeto 
-  >>> ``` yarn start```
+>> #### Passo 4: Executar o projeto 
+ >>> ``` yarn start```
+ 
+>> #### Passo 5: Visualizar o projeto 
+>>> Acesse ``` http://localhost:3000```
